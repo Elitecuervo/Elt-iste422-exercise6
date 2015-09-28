@@ -1,0 +1,26 @@
+Yuri E. 
+ISTE-422 
+exercise 6
+
+I've research about anti-patterns because I've never heard about it. 
+I've looking it up through http://rolf-engelhard.de/2013/03/logging-anti-patterns-part-i/, http://rolf-engelhard.de/2013/04/logging-anti-patterns-part-ii/, and http://rolf-engelhard.de/2013/10/logging-anti-patterns-part-iii/
+
+Anti-Pattern #1 
+
+According to logging-anti-patterns website, they didn't use throw e, since it will throw important data off from the log, so use LOGGER.error instead. unless you want to sweep error under the rug, then use throw e. 
+
+Anti-Pattern #2
+
+I've notice that 'e' is important and insert in the exception. If I'm not use it then 
+this data will be throw away. Use 'e' to trace and keep this information in log. For example, "System.err.println("There was a problem!");"; should be "LOGGER.error("There was a problem!", e);"
+
+Anti-Pattern #3 
+
+Finally, I believe that System.err.println(e.getMessage()) and e.printStackTrace() are anti-patterns, so I've replace those lines with LOGGER.error(e.getMessage(), e); because I can use it to show up in the console instead lost all data. 
+
+
+
+
+
+
+
